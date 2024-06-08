@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="expires" content="604800">
+  <meta name="format-detection" content="email=no,telephone=no,address=no">
+  <title>【カリキュラム番号】| 【カリキュラム名】</title>
+  <meta name="description" content="【01】| 【2.Javascript】のdescriptionです">
+  <link rel="icon" href="assets/images/common/favicon.ico">
+  <link rel="canonical" href="（正しいページURL）">
+  <link rel="apple-touch-icon-precomposed" href="（アップルタッチアイコンの画像URL）">
+  <link rel="stylesheet" href="assets/stylesheets/app.css">
+  <script src="assets/javascripts/lib/jquery-1.9.1.min.js" defer></script>
+  <script src="assets/javascripts/lib/index.js" defer></script>
+</head>
+
+<body>
+  <h1 class="main__title">JS課題カリキュラム</h1>
+  <script>
+    //主人公クラス
+    class Player {
+      #energy;//体力
+      #power;//攻撃力
+      //コンストラクタ
+      constructor(energy, power) {
+        this.#energy = energy;
+        this.#power = power;
+      }
+      //アクセサ
+      get energy() {
+        return this.#energy;
+      }
+      set energy(energy) {
+        this.#energy = energy;
+      }
+      get power() {
+        return this.#power;
+      }
+      set power(power) {
+        this.#power = power;
+      }
+      //攻撃
+      attack(enemy) {
+        if (Math.random() < 0.3) {
+          //30%の確率で体力を6回復
+          this.#heal(6);
+        } else {
+          //それ以外の場合、攻撃して相手の体力を減らす
+          enemy.energy -= this.power;
+          console.log(this.power + "のダメージを原始人に与えた");
+        }
+      }
+      //体力回復
+      #heal(recovery) {
+        this.energy += recovery;
+        console.log(recovery + "自分の体力を回復した！");
+      }
+    }
+
+    //原始人クラス
+    class Gensijin extends Player {
+      //コンストラクタ
+      constructor(energy, power) {
+        super(energy, power);
+      }
+      //攻撃
+      attack(enemy) {
+        enemy.energy -= this.power;
+        console.log(this.power + "のダメージを現代人に与えた！");
+      }
+    }
+
+    //主人公と原始人のインスタンスを生成
+    const player = new Player(15, 5);//体力：15、攻撃力：5
+    const gensijin = new Gensijin(25, 4);//体力25、攻撃力：4
+    //どちらかの体力が尽きるまで戦う
+    while (player.energy > 0 && gensijin.energy > 0) {
+      //主人公の行動
+      console.log("あなたのターン！");
+      player.attack(gensijin);
+      if (gensijin.energy <= 0) {
+        console.log("原始人を倒した！");
+        break;
+      }
+      //原始人の行動
+      console.log("原始人のターン！");
+      gensijin.attack(player);
+      if (player.energy <= 0) {
+        console.log("原始人に敗れた！");
+        break;
+      }
+    }  </script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+/* 共通スタイルは外に書く */
+
+.wrapper {
+    background-image: url("/home/master/Desktop/jQuery-JavaScript/JavaScript/02/assets/images/common/contact_bg.jpg");
+    height: 100%;
+    background-size: auto;
+    padding-bottom: 120px;
+}
+
+@media screen and (min-width: 960px) {
+    /* pc用スタイル */
+
+}
+
+@media screen and (max-width: 959px) {
+    /* sp用スタイル */
+
+
+}

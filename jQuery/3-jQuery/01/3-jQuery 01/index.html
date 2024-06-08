@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>01 | 3-jQuery</title>
+  <link rel="stylesheet" href="../../00-tools/css/reset.css" />
+  <link rel="stylesheet" href="../../00-tools/css/base.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="text/javascript" src="js/jquery.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="container">
+      <div class="result">ajax通信成功したら表示が変わる</div>
+      <button id="jsi-ajax-button" class="ajax__btn">取得する</button>
+    </div>
+  </div>
+  <script defer>
+    //
+    // ajax通信の課題です。
+    // ajax通信を行い、指定したHTML(success.html)の内容を取得し表示してください。
+    // vscode拡張機能のlive serverを使って実行してください（ローカルサーバを立てないと通信失敗になります）。
+    // ajax通信を行ったリクエストは、ブラウザの検証ツール「Network」で確認することができます。
+    //
+    $("#jsi-ajax-button").click(function () {
+      $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:5500/success.html",
+        dataType: 'html'
+      })
+        .done(function (getResults) {
+          const a = $(getResults);
+          $('.result').html(a);
+        })
+        .fail(function (getResults) {
+          window.alert('取得に失敗しました。');
+        })
+        .always(function (getResults) {
+          console.log('ajax通信が終了しました。');
+        });
+    });
+  </script>
+</body>
+
+</html>

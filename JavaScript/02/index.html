@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="expires" content="604800">
+  <meta name="format-detection" content="email=no,telephone=no,address=no">
+  <title>【02】| 【2-Javascript】</title>
+  <meta name="description" content="【02】| 【2-Javascript】のdescriptionです">
+
+  <link rel="icon" href="assets/images/common/favicon.ico">
+
+
+  <link rel="stylesheet" href="assets/stylesheets/app.css">
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <img class="header__logo" src="assets/images/common/logo.png" alt="header__logo">
+      <nav class="header__menu">
+        <ul class="header__menuList">
+          <li class="header__menuItem">about</li>
+          <li class="header__menuItem">business</li>
+          <li class="header__menuItem">recruit</li>
+          <li class="header__menuItem">contact</li>
+        </ul>
+      </nav>
+    </header>
+    <div class="contact__wrapper">
+      <h1 class="contact__title">CONTACT</h1>
+      <p class="contact__content">お問い合わせ項目</p>
+      <select class="contact__select">
+        <option>項目１</option>
+      </select>
+      <p class="contact__content">お名前</p>
+      <input class="contact__input" type="text" placeholder="例）フーミン">
+      <p class="contact__content">お問い合わせ</p>
+      <textarea class="contact__textArea" placeholder="ここに入力して下さい。"></textarea>
+      <div class="contact__checkboxWrapper">
+        <p class="contact__checkboxTitle">趣味</p>
+        <ul class="contact__checkboxList">
+          <li class="contact__checkboxItem">
+            <input type="checkbox" class="contact__checkbox" value="野球"><label class="contact__checkboxName">野球</label>
+          </li>
+          <li class="contact__checkboxItem">
+            <input type="checkbox" class="contact__checkbox" value="サッカー"><label
+              class="contact__checkboxName">サッカー</label>
+          </li>
+          <li class="contact__checkboxItem">
+            <input type="checkbox" class="contact__checkbox" value="バスケ"><label
+              class="contact__checkboxName">バスケ</label>
+          </li>
+          <li class="contact__checkboxItem">
+            <input type="checkbox" class="contact__checkbox" value="バレーボール"><label
+              class="contact__checkboxName">バレーボール</label>
+          </li>
+          <li class="contact__checkboxItem">
+            <input type="checkbox" class="contact__checkbox" value="陸上"><label class="contact__checkboxName">陸上</label>
+          </li>
+          <li class="contact__checkboxItem">
+            <input type="checkbox" class="contact__checkbox" value="大食い"><label
+              class="contact__checkboxName">大食い</label>
+          </li>
+          <li class="contact__checkboxItem">
+            <input type="checkbox" class="contact__checkbox" value="ドライブ"><label
+              class="contact__checkboxName">ドライブ</label>
+          </li>
+          <li class="contact__checkboxItem">
+            <input type="checkbox" class="contact__checkbox" value="ショッピング"><label
+              class="contact__checkboxName">ショッピング</label>
+          </li>
+        </ul>
+      </div>
+      <div class="contact__buttonArea">
+        <input class="contact__button" type="submit" value="確認画面へ">
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer__menu">
+      <ul class="footer__list">
+        <li class="footer__item">利用規約</li>
+        <li class="footer__item">プライバシーポリシー</li>
+        <li class="footer__item">お問い合わせ</li>
+      </ul>
+      <div class="copylight">
+        <p class="copylight">&copy;SE assist</p>
+      </div>
+    </div>
+  </footer>
+  </div>
+</body>
+
+<script>
+  const checkBox = document.querySelectorAll('.contact__checkbox');
+  const contactButton = document.querySelector('.contact__button');
+
+  contactButton.addEventListener('click', function () {
+    const checked = [...checkBox].filter((box) => box.checked);
+    const labels = checked.map((box) => box.value);
+    alert(labels);
+  });
+</script>
+
+</html>

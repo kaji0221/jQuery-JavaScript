@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>02 | 2-jQuery</title>
+  <link rel="stylesheet" href="../../00-tools/css/reset.css" />
+  <link rel="stylesheet" href="../../00-tools/css/base.css" />
+  <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/slick.css" />
+  <link rel="stylesheet" href="css/slick-theme.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="text/javascript" src="js/jquery.js" defer></script>
+  <script src="js/slick.min.js" defer></script>
+  <script src="js/swiper-bundle.min.js" defer></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="img/1.jpg" alt="" /></div>
+        <div class="swiper-slide"><img src="img/2.jpg" alt="" /></div>
+        <div class="swiper-slide"><img src="img/3.jpg" alt="" /></div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-scrollbar"></div>
+    </div>
+    <div class="slick">
+      <ul class="slick-wrapper">
+        <li><img src="img/1.jpg" alt="" /></li>
+        <li><img src="img/2.jpg" alt="" /></li>
+        <li><img src="img/3.jpg" alt="" /></li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      //
+      // 前回の2-jQuery/01では、プラグインを使わずにスライドショーを実装していただきました。
+      // 大変だったとは思いますが、プラグインが使えない、使わない状況で動きをつけるとなった時に必ず役に立ってきます。
+      //
+      // 今回の課題では、プラグインを使ったスライドショーをしていただきます。
+      //
+
+      // ①swiperを使用して実装
+      //
+      // "swiper" というプラグインを使用してください。
+      //
+      //【実装要件】
+      //・端位置からループさせる
+      //・下部にページネーション（丸）を入れ、クリックでスライドが移動する
+      //・スライドの移動時間を0.6秒に設定する
+
+      const swiper = new Swiper('.swiper', {
+        loop: true,
+        speed: 600,
+        pagination: {
+          el: '.swiper-pagination',
+        },
+
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+      //②slickを使用して実装
+      //
+      // "slick" というプラグインを使用してください。
+      //
+      //【実装要件】
+      //・端位置からループさせる
+      //・SP表示（959px）時、左右の矢印を非表示にする
+      //・さらに640pxになった時、ドットのページネーションも非表示にする
+      //・下部にページネーション（丸）を入れ、クリックでスライドが移動する
+      //
+      $('.slick-wrapper').slick({
+        responsive: [{
+          breakpoint: 960,
+          settings: {
+            arrows: false
+          },
+          breakpoint: 640,
+          settings: {
+            dots: true
+          }
+        }]
+      });
+    });
+  </script>
+</body>
+
+</html>

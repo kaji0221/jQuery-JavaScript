@@ -1,0 +1,129 @@
+.u-mbm {
+  margin: 0 auto 20px;
+  text-align: center;
+}
+
+.Q6-color {
+  color: red;
+}
+
+.btn {
+  line-height: 40px;
+  border-radius: 10px;
+  width: 200px;
+  background-color: orange;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+}
+
+.lists>li {
+  text-align: center;
+  line-height: 30px;
+  width: 200px;
+  color: #fff;
+  background-color: pink;
+  border-bottom: 1px #fff solid;
+  cursor: pointer;
+}
+
+.wrapper {
+  width: 500px;
+  margin: 30px auto 0;
+  text-align: center;
+}
+
+.is-big {
+  font-size: 25px;
+}
+
+
+/* 03課題追加部分 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin: -150px 0 0 -150px;
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.modal-text {
+  display: table-cell;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.modal-close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+  padding-bottom: 4px;
+  background-color: #fff;
+  border: 2px #777 solid;
+  border-radius: 15px;
+  color: #777;
+  font-weight: bold;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* 04課題追加分 */
+.nav {
+  width: 100%;
+  max-width: 600px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.nav>li {
+  list-style: none;
+  float: left;
+  width: 33.333%;
+  background-color: #CCC;
+  text-align: center;
+  line-height: 50px;
+  color: #FFF;
+  font-size: 20px;
+  border-right: 2px #FFF solid;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.nav>li:last-child {
+  border-right: none;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.contents {
+  width: 100%;
+  max-width: 600px;
+  padding: 30px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 auto;
+  border: 2px #CCC solid;
+  border-top: none;
+}
+
+.contents>li {
+  list-style: none;
+}

@@ -1,0 +1,60 @@
+/* 共通スタイルは外に書く */
+
+.footer {
+    padding: 30px 300px;
+    background-color: #fffacd;
+}
+
+.footer__menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__list {
+    display: flex;
+}
+
+.footer__item {
+    margin-left: 20px;
+    font-weight: 700;
+}
+
+.footer__item:first-child {
+    margin: 0;
+}
+
+.copylight {
+    font-weight: 700;
+}
+
+@media screen and (max-width: 960px) {
+    /* pc用スタイル */
+
+    .footer {
+        padding: 30px 120px;
+    }
+}
+
+@media screen and (max-width: 959px) {
+    /* sp用スタイル */
+
+    .footer {
+        text-align: center;
+    }
+
+    .footer__menu {
+        display: block;
+    }
+
+    .footer__list {
+        display: block;
+    }
+
+    .footer__item {
+        margin: 0;
+    }
+
+    .copylight {
+        margin: 30px;
+    }
+}

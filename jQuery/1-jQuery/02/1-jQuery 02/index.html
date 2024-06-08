@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>02 | 1-jQuery</title>
+  <link rel="stylesheet" href="../../00-tools/css/reset.css" />
+  <link rel="stylesheet" href="../../00-tools/css/base.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/jquery.js"></script>
+</head>
+<body>
+  <h1 class="u-mbm is-big">02 | 1-jQuery</h1>
+  <div class="wrapper">
+    <div class="u-mbm btn" id="jsi-Q1">Q1</div>
+    <div class="u-mbm btn" id="jsi-Q2">Q2</div>
+    <div class="u-mbm btn" id="jsi-Q3">Q3</div>
+    <div class="u-mbm btn" id="jsi-Q4">Q4</div>
+    <div class="u-mbm btn" id="jsi-Q5">Q5</div>
+    <div class="u-mbm btn" id="jsi-Q6">Q6</div>
+    <div class="u-mbm btn" id="jsi-Q7">Q7</div>
+    <p class="modal-show u-mbm btn" id="jsi-Q8">Q8</p>
+    <div class="modal" id="jsi-modal" style="display: none">
+      <div class="modal-content">
+        <div class="modal-text">MODAL WINDOW</div>
+        <button type="button" class="modal-close" id="jsi-modalClose">x</button>
+      </div>
+    </div>
+    <ul class="nav" id="jsi-Q9">
+      <li>Q9 HOME</li>
+      <li>Q9 NEWS</li>
+      <li>Q9 MYPAGE</li>
+    </ul>
+    <ul class="contents" id="jsi-Q10">
+      <li>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </li>
+      <li class="is-hidden">
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+      </li>
+      <li class="is-hidden">
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+        officia deserunt mollit anim id est laborum.
+      </li>
+    </ul>
+  </div>
+  <script>
+    // 各課題の対象となる要素には、id属性を指定してください。
+    // JavaScript用として先頭に「jsi-」（”J”ava”S”criptの”I”D）というプレフィックス（接頭辞）をつけることが、慣例となっています。
+
+
+
+    // ------------------------------------------------------------
+    // 第1問
+    // Q1の要素をクリックしたら、myAgeという変数にかかれた年齢を元に、
+    // 以下の条件の時、指定された"テキスト"をアラートで出力せよ。
+    // 0~1歳：⚪︎歳のあなたは乳児でちゅ。
+    // 2~6歳：⚪︎歳のあなたは幼児でしゅ。
+    // 7~12歳：⚪︎歳のあなたは小学生だよ。
+    // 13~15歳：⚪︎歳のあなたは中学生だぜ。
+    // 16~18歳：⚪︎歳のあなたは高校生っす。
+    // 19~22歳：⚪︎歳のあなたは大学生です。
+    // 23~59歳：⚪︎歳のあなたは社会人でございます。
+    // 60~99歳：⚪︎歳のあなたは高齢者じゃ。
+    // 100~：すごい。
+    // それ以外（そもそも数字じゃ無いなど）：ちゃんといれてください。
+    // ------------------------------------------------------------
+    $('#jsi-Q1').on('click', function () {
+      let myAge = 26;
+
+      if (myAge <= 0 && myAge <= 1) {
+        alert(myAge + '歳のあなたは乳児でちゅ。');
+      } else if (myAge >= 2 && myAge <= 6) {
+        alert(myAge + '歳のあなたは幼児でしゅ。');
+      } else if (myAge >= 7 && myAge <= 12) {
+        alert(myAge + '歳のあなたは小学生だよ');
+      } else if (myAge >= 13 && myAge <= 15) {
+        alert(myAge + '歳のあなたは中学生だぜ。');
+      } else if (myAge >= 16 && myAge <= 18) {
+        alert(myAge + '歳のあなたは高校生っす。');
+      } else if (myAge >= 19 && myAge <= 22) {
+        alert(myAge + '歳のあなたは大学生です。');
+      } else if (myAge >= 23 && myAge <= 59) {
+        alert(myAge + '歳のあなたは社会人でございます。');
+      } else if (myAge >= 60 && myAge <= 99) {
+        alert(myAge + '歳のあなたは高齢者じゃ');
+      } else if (myAge >= 100) {
+        alert('すごい。');
+      } else {
+        alert('ちゃんといれてください。');
+      }
+    });
+    // ------------------------------------------------------------
+    // 第2問
+    // Q2の要素をクリックしたらfor文を用いて、
+    // 「10987654321」という文字列を作り、Q2の後にその文字列を挿入せよ。
+    // ------------------------------------------------------------
+    $('#jsi-Q2').on('click', function () {
+      for (let i = 1; i < 11; i++) {
+        $(this).after(i);
+      }
+    });
+    // ------------------------------------------------------------
+    // 第3問
+    // Q3の要素をクリックしたらfor文、if文を用いて、
+    // 1~100の数字で3と7を約数に持つ（3と7で割きれる）整数で文字列を作り、
+    // Q3の後にその文字列を挿入せよ。
+    // ------------------------------------------------------------
+    $('#jsi-Q3').on('click', function () {
+      let text = "";
+
+      for (let i = 1; i <= 100; i++) {
+        if (!(i % 3) && !(i % 7)) {
+          text += i;
+        }
+      } $(this).after(text);
+    });
+    // ------------------------------------------------------------
+    // 第4問
+    // Q4の要素をクリックしたらfor文を用いて、
+    // [2,4,6,8,10,12,14,16,18,20]という配列をconsoleに出力せよ。
+    // ------------------------------------------------------------
+    $('#jsi-Q4').on('click', function () {
+      let array = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20];
+
+      for (let i = 0; i < 10; i++) {
+        console.log(array);
+      }
+    });
+    // ------------------------------------------------------------
+    // 第5問
+    // Q5の要素をクリックし、以下の情報をそれぞれ表示せよ。
+    // ①今開いているファイル（index.html）のパス
+    // ②今年（2021）
+    // ③今月（1~12）
+    // ④今日（1~31）
+    // ------------------------------------------------------------
+    $('#jsi-Q5').on('click', function () {
+      let year = '2024';
+      let month = '4';
+      let day = '23';
+
+      console.log('file:///home/master/Desktop/1-jQuery/1-jQuery/02/work/index.html')
+      console.log(year + '年');
+      console.log(month + '月');
+      console.log(day + '日');
+    });
+    // ------------------------------------------------------------
+    // 第6~7問
+    // Q6の要素をクリックすると要素の文字が赤くなり、
+    // Q7の要素をクリックすると要素の文字を青くさせよ。
+    // 但し、コールバック関数は１つで実装すること。
+    // 必要に応じて、要素に属性などは追加して良いものとします。
+    // ------------------------------------------------------------
+    $('#jsi-Q6').on('click', function () {
+      target($(this).css('color', 'red'));
+    });
+
+    $('#jsi-Q7').on('click', function () {
+      target($(this).css('color', 'blue'));
+    });
+
+    function target(target) { }
+    // ------------------------------------------------------------
+    // 第8問
+    // modalShowをクリックすることで、modalをfadeInさせる。
+    // （fadeInではなくfadeToで透明度を調整しています。）
+    // modalCloseをクリックで、modalをfadeOutさせる。
+    // .fadeTo() 第一引数に秒数、第二引数に透明度を設定し、
+    // その設定した秒数をかけて、設定した透明度に変化する。
+    // .fadeOut() 一定時間かけてフェードアウトする。
+    // ------------------------------------------------------------
+    let $modal = $('#jsi-modal');
+
+    $('#jsi-Q8').on('click', function () {
+      $modal.fadeTo(1000, 0.5);
+    });
+
+    $('#jsi-modalClose').on('click', function () {
+      $modal.fadeOut(1000);
+    });
+    // ------------------------------------------------------------
+    // 第9問
+    // navの子要素であるliをクリックして、
+    // contents内の子要素であるli要素を表示させてください。
+    // ------------------------------------------------------------
+    $('#jsi-Q9').find('li').on('click', function () {
+      let content = $(this).index();
+
+      $('#jsi-Q10').find('li').eq(content).removeClass('is-hidden').siblings().addClass('is-hidden');
+    });
+  </script>
+</body>
+</html>

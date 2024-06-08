@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <title>02 | 1-jQuery</title>
+    <link rel="stylesheet" href="../../00-tools/css/reset.css" />
+    <link rel="stylesheet" href="../../00-tools/css/base.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="js/jquery.js" defer></script>
+    <!-- 高速化の為にdefer -->
+  </head>
+  <body>
+    <h1 class="u-mbm is-big">02 | 1-jQuery</h1>
+    <div class="wrapper">
+      <div class="u-mbm btn" id="jsi-q1">Q1</div>
+      <div class="u-mbm btn" id="jsi-q2">Q2</div>
+      <div class="u-mbm btn" id="jsi-q3">Q3</div>
+      <div class="u-mbm btn" id="jsi-q4">Q4</div>
+      <div class="u-mbm btn" id="jsi-q5">Q5</div>
+      <div class="u-mbm btn" id="jsi-q6">Q6</div>
+      <div class="u-mbm btn" id="jsi-q7">Q7</div>
+      <div class="u-mbm btn" id="jsi-q8">Q8</div>
+      <div class="u-mbm btn" id="jsi-q9">Q9</div>
+      <div class="u-mbm btn" id="jsi-q10">Q10</div>
+      <p class="modal-show u-mbm btn">Q11</p>
+      <div class="modal" style="display: none">
+        <div class="modal-content">
+          <div class="modal-text">MODAL WINDOW</div>
+          <button type="button" class="modal-close">x</button>
+        </div>
+      </div>
+      <ul class="nav">
+        <li>Q12 HOME</li>
+        <li>Q12 NEWS</li>
+        <li>Q12 MYPAGE</li>
+      </ul>
+      <ul class="contents">
+        <li>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </li>
+        <li class="is-hidden">
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+        </li>
+        <li class="is-hidden">
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+          officia deserunt mollit anim id est laborum.
+        </li>
+      </ul>
+    </div>
+
+    <script defer>
+      // defer
+      window.addEventListener(
+        "load",
+        function () {
+          /**
+           * 今回説明するのはif文です。
+           *
+           * if (条件式) {
+           *   処理
+           * } else {
+           *   処理
+           * }
+           * 条件式の真偽値(trueもしくはfalse)によって処理の振り分けをします。
+           * >= は比較演算子と呼ばれ、if() 内で2つのものを比較する際に使用されます。
+           *
+           * 【参考】
+           * 等しい (==), 等しくない (!=),
+           * より大きい (>), より大きいまたは等しい(以上) (>=),
+           * より小さい (<), より小さいまたは等しい(以下) (<=)
+           *
+           * if (myAge >= 20) この部分でmyAgeが20以上なのかどうかを判定しています。
+           * myAgeには25が代入されているので、結果はtrueになります。
+           * そのためalert("あなたは成人です。");の方の処理が実行されます。
+           * 今回はmyAgeに25が代入されていますが、19以下に書き換えて実行すればelse側の処理になります。
+           *
+           * もうひとつ判定式が欲しい場合はelse if()というものを使います。
+           *
+           * if (条件式) {
+           *     処理
+           * } else if (条件式) {
+           *     処理
+           * } else {
+           *     処理
+           * }
+           * 最初のif文でfalseになった処理が次にelse if()に流れてきます。
+           * ここでtrueになれば、その処理は実行されます。
+           * ちなみにelse if()はいくらでも増やすことが出来るため、細かい判定処理を入れたい場合は重宝します。
+           *
+           */
+          $("#jsi-q1").on("click", function () {
+            let myAge = 25;
+
+            if (myAge >= 20) {
+              alert("あなたは成人です。");
+            } else {
+              alert("あなたは未成年です。");
+            }
+          });
+
+          /**
+           * 今回説明するのはfor文です。
+           * for文は連続した処理を一括で出来る、便利な繰り返し文です。
+           *
+           * for (let i = 初期値; 繰り返し条件; i++) {
+           *   処理
+           * }
+           *
+           * for (let i = 0; i < 10; i++) について
+           *
+           * まず let i = 0; ここは単純にiという変数に0を代入しています。
+           * その次に i < 10; です。ここはif文でも書いた条件式です。
+           * 最後にあるのが i++ です。この++というのは元の値に+1をする算術演算子と呼ばれるものです。
+           * ちなみに+1されることを「インクリメント」と言います。
+           *
+           * これらを組み合わせると、 (let i = 0; i < 10; i++) は、
+           * 0から始まって+1を繰り返していき、10と等しいかそれ以上になった段階で条件と合わなくなることがわかります。
+           *
+           * そしてこのfor文の中ではletで宣言したiが使うことが出来ます。
+           *
+           * text += i; について
+           *
+           * += は複合代入演算子(名前は重要ではない)と呼ばれ、代入する時に計算したものを代入する演算子です。
+           *
+           *
+           * 【参考】※前提として代入なのでiの値が変わる。
+           * i += 2; iに2を足す（右辺が1の場合i++と同義）
+           * i -= 2; iから2を引く（右辺が1の場合i--と同義）
+           * i *= 2; iに2をかける
+           * i /= 2; iを2で割る
+           *
+           * つまり、textと呼ばれる変数にi(0〜9まで)が追加されています。
+           * そして最後にtextをafterで出力しています。
+           *
+           */
+          $("#jsi-q2").on("click", function () {
+            let text = "";
+
+            for (let i = 0; i < 10; i++) {
+              text += i;
+            }
+            $(this).after(text);
+          });
+
+          /**
+           * 次は、if文とfor文の組み合わせです。
+           *
+           * if (!(i % 2) || i > 8) について
+           * まず、この条件式は２つの条件をもちます。
+           *
+           * 「!(i % 2)」 || 「i > 8」の「」でくくられている部分が条件式になっています。
+           * 真ん中の||は、これはどちらかの条件式がtrueだった場合にtrueを返す論理演算子と呼ばれます。
+           * 「どちらか」という意味で「or」とも読みます。
+           * &&と書くことで、「どちらも」という意味で「and」を表します。
+           * これらは、基本中の基本なので、暗記しましょう。
+           *
+           * !(i % 2) の!はtrue、falseを逆にする論理演算子です。
+           * 後述しますが、(i % 2)は奇数の時にtrueになるのでその反対の偶数が返るようになっています。
+           *
+           * 【参考】※代入ではないのでiの値は変わらない。
+           * i + 2; iに2を足す
+           * i - 2; iから2を引く
+           * i * 2; iに2をかける
+           * i / 2; iを2で割る
+           * i % 2; iを2で割った余り（MOD関数のように剰余を返します）
+           *
+           * if文は条件式の結果が0だとfalseになります。（言語によって解釈が変わります。左記はJavascriptの場合の話です）
+           * iが0の場合(0 % 2)は0なのでfalse、1の場合(1 % 2)は1なのでtrue、2の場合(2 % 2)は0なのでfalseになります。
+           *
+           * 上記の条件式を組み合わせると0,2,4,6,8,9といった値が取得出来ます。
+           * 単一の条件式だと難しいものが、2つにすることで簡単に取得出来るようになっています。
+           *
+           */
+          $("#jsi-q3").on("click", function () {
+            let text = "";
+
+            for (let i = 0; i < 10; i++) {
+              if (!(i % 2) || i > 8) {
+                text += i;
+              }
+            }
+            $(this).after(text);
+          });
+
+          /**
+           * 今回勉強するのは配列です。
+           *
+           * そもそも配列とは、複数件のデータを扱うためのデータ構造です。
+           *
+           * let array = [];
+           *
+           * ここで空の配列をarrayという変数に代入しています。
+           * この他にも let array = new Array(); これでも空の配列を作ることが出来ます。
+           *
+           * array[i] = i - 10;
+           *
+           * array[i]：iはこの配列の何番目かを指定しています。
+           * iは最初は0なので、 array[0] = 0 - 10; となります。
+           *
+           * これで配列の一番最初(0番目)に-10という値がセットされました。
+           * これを繰り返すと [-10,-9,-8,-7,-6,-5,-4,-3,-2,-1]という配列が出来上がります。
+           * なのでconsole.log(array);はこれと同じものになるでしょう。
+           *
+           * console.log(array[5]); はこの配列の0から数えて5番目の値にアクセスするので-5という値が取れると思います。
+           * このようにデータの集合体として配列を作り、array[5]のようにしてアクセスすることで、
+           * 演算などをする必要がなく、コードを簡略化することが出来ます。
+           *
+           */
+          $("#jsi-q4").on("click", function () {
+            let array = [];
+
+            for (let i = 0; i < 10; i++) {
+              array[i] = i - 10;
+            }
+            console.log(array);
+            console.log(array[5]);
+          });
+
+          /**
+           * 今回は文字列の結合です。
+           *
+           * 算術演算子として紹介した+ですが、これは文字列の結合にも使えます。
+           * その際、+の前後の文字列を「""」もしくは「''」でくくります。
+           *
+           */
+          $("#jsi-q5").on("click", function () {
+            let myName = "あああ";
+
+            console.log("HELLO, " + myName + "! GOOD MORNING!");
+          });
+
+          /**
+           * 今回は文字列についてです。
+           *
+           * 上記で、文字列は「""」もしくは「''」でくくりますと記述しましたが、
+           * その文字列の中に「""」もしくは「''」が入っている場合は、つなぎ目で両方使うことで結合することができます。
+           *
+           */
+          $("#jsi-q6").on("click", function () {
+            let className = "is-big",
+              elem =
+                "<div class='" + className + " u-mbm btn'>追加された要素</div>";
+
+            $(this).after(elem);
+          });
+
+          /**
+           * 今回紹介するのはjavascriptで取得出来る情報です。
+           *
+           * #jsi-q7をクリック後、consoleを見ると、
+           *
+           * ①今開いているファイル（index.html）のURL
+           * ②現在日時
+           *
+           * が表示されていると思います。
+           * このようにjavascriptではこれ以外にも色々な情報を取得出来るので、是非調べてみて下さい。
+           *
+           */
+          $("#jsi-q7").on("click", function () {
+            let href = location.href,
+              date = new Date();
+
+            console.log(location.href);
+            console.log(date);
+          });
+
+          /**
+           * setTimeoutについて勉強しましょう。
+           *
+           * setTimeoutは時間差で関数を実行するメソッドです。
+           *
+           * setTimeout()の第一引数に関数を渡し、二つ目の引数に秒数を渡します。
+           * こうすることによって第二引数の秒数後に第一引数の関数を実行することになります。
+           *
+           * function() {
+           *   alert("jQuery入門");
+           * }
+           * この部分が第一引数の関数。
+           *
+           * , 2000
+           * この部分が第二引数の秒数。
+           *
+           * となります。
+           */
+
+          $("#jsi-q8").on("click", function () {
+            setTimeout(function () {
+              alert("jQuery入門");
+            }, 2000);
+          });
+
+          /**
+           * 最後にコールバック関数について解説します。（01のQ3で少し触れました）
+           *
+           * 少し難しいですが、実務において実装する手法としては理解が必須なので、
+           * 頑張って理解しましょう。
+           *
+           * #jsi-q9と#jsi-q10に対して、クリックイベントを設定し、それぞれに対して関数を記述しています。
+           * この関数をコールバック関数といいます。
+           *
+           * コールバック関数を使うことで、処理を共通化することができ、同じ処理のたびに同じ記述をする必要がなくなります。
+           *
+           * これは、メンテナンス性・可読性・動作性においては非常に重要です。
+           * 今後の課題においても、積極的に使ってください。
+           *
+           * もしコールバックを行わない場合は、以下のような記述になります。
+           *
+           * $("#jsi-q9").on('click', function() {
+           *   $(this).slideUp(1000);
+           * });
+           *
+           * $("#jsi-q10").on('click', function() {
+           *   $(this).slideUp(500);
+           * });
+           *
+           * これら２つの違うDOMに対してのクリックイベントの違いは、
+           *
+           * 【要素が】上にスライドして【⚪︎秒間で】消える
+           *
+           * という、【 】で括られた部分が違うだけで、あとの処理（上にスライドして消える）は共通であると考えることができます。
+           * なので、この【 】というのを、DOM固有の値として、コールバック関数に「引数」として投げることで、
+           * 関数側は、引数に応じて共通の処理を実行するだけでよくなります。
+           *
+           * このように、コールバックを利用して、イベントと処理（関数）を分けることで、
+           * 再利用性の向上を図り、パフォーマンスへのハレーションを最小限にしていくことが求められます。
+           *
+           */
+          $("#jsi-q9").on("click", function () {
+            hiddenTarget($(this), 100);
+          });
+
+          $("#jsi-q10").on("click", function () {
+            hiddenTarget($(this), 500);
+          });
+
+          function hiddenTarget($target, period) {
+            $target.slideUp(period);
+          }
+        },
+        false
+      );
+    </script>
+  </body>
+</html>

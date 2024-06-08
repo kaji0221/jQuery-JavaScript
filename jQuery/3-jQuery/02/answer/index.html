@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>郵便番号検索</title>
+  <link rel="stylesheet" href="../../00-tools/css/reset.css">
+  <link rel="stylesheet" href="../../00-tools/css/base.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="js/jquery.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="container">
+    <div class="header">
+      <p class="header__title">Search Address</p>
+    </div>
+    <div class="search">
+      <div class="search__text">
+        <p>郵便番号を入力してください(※半角7桁)</p>
+        <input type="text" id="zip_code" class="search__text__input" value="" placeholder="郵便番号" maxlength="7">
+      </div>
+      <button id="jsi-search-button" class="search__btn">検索する</button>
+    </div>
+    <div id="search_result"></div>
+  </div>
+</div>
+</body>
+</html>

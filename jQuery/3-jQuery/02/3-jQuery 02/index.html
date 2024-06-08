@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>02 | 3-jQuery</title>
+  <link rel="stylesheet" href="../../00-tools/css/reset.css" />
+  <link rel="stylesheet" href="../../00-tools/css/base.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="text/javascript" src="js/jquery.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="container">
+      <div class="header">
+        <p class="header__title">Search Address</p>
+      </div>
+      <div class="search">
+        <div class="search__text">
+          <p>郵便番号を入力してください(※半角7桁)</p>
+          <input type="text" id="zip_code" class="search__text__input" value="" placeholder="郵便番号" maxlength="7" />
+        </div>
+        <button id="jsi-search-button" class="search__btn">検索する</button>
+      </div>
+      <div id="search_result"></div>
+    </div>
+  </div>
+  <script defer>
+    //
+    //  ajax通信を使い郵便番号から住所を表示する課題です。
+    //  郵便番号を検索したときに、検索された住所が非同期で表示されるようにします。
+    //  URLには、郵便番号検索APIを使います。参考URL 「https://zipcloud.ibsnet.co.jp/doc/api」
+    //
+    $("#jsi-search-button").click(function () {
+
+      const param = { zipcode: $('#zip_code').val(), limit: 1 }
+
+      $.ajax({
+        type: "GET",
+        cache: false,
+        data: param,
+        url: "https://zipcloud.ibsnet.co.jp/api/search",
+        dataType: "jsonp",
+        success: function (data) {
+          if (data.status == 200) {
+            var result_txt = '';
+            if (data.results == null) {
+              result_text += '<div>該当する住所がありません</div>';
+            }
+            else {
+              result_text += '<div>住所：' + data.results[0].address1 + data.results[0].address2 + data.results[0].address3 + '</div>' +
+                '<div>カナ:' + data.results[0].kana1 + data.results[0].kana2 + data.results[0].kana3 + '</div></br>';
+
+            }
+            $('#search_result').html(result_text);
+          }
+          else {
+            $('#search_result').html(data.message);
+          }
+        }
+      });
+    })
+  </script>
+</body>
+
+</html>

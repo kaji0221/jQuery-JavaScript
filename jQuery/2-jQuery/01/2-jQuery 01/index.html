@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>01 | 2-jQuery</title>
+  <link rel="stylesheet" href="../../00-tools/css/reset.css" />
+  <link rel="stylesheet" href="../../00-tools/css/base.css" />
+  <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/slick.css" />
+  <link rel="stylesheet" href="css/slick-theme.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="text/javascript" src="js/jquery.js" defer></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="slider-wrap">
+      <div class="slider-area">
+        <ul class="slider-list clearfix">
+          <li><img src="img/1.jpg" alt="" /></li>
+          <li><img src="img/2.jpg" alt="" /></li>
+          <li><img src="img/3.jpg" alt="" /></li>
+          <li><img src="img/4.jpg" alt="" /></li>
+        </ul>
+        <button type="button" class="slider-ctrl-btn prev" data-ctrl="prev"></button>
+        <button type="button" class="slider-ctrl-btn next" data-ctrl="next"></button>
+      </div>
+    </div>
+  </div>
+  <script defer> // defer
+    window.addEventListener('load', function () {
+      //
+      // 2-jQueryではプラグインを導入してページに動きをつけていく方法を学んでいきます。
+      // 今回は3つの方法でスライドショーを作るので、それぞれ実装要件をよく見て作成してください。
+      //
+      // jQyeryには、便利な機能群がプラグインという形式で、提供されているものがたくさんあります。
+      // よく実務で使う、スライドショー用のプラグイン２種と、プラグインが使えない環境での作業を想定した、jQueryの処理のみでの実装をそれぞれやってもらいます。
+      // 「プラグインによる実装ができない」ことも、「プラグインでの実装だけできる」でもよろしく無いので、状況に応じて対応できるようになりましょう。
+      //
+      // .animateを使い、slider-listのleftを-方向にすることでアニメーションを実現している
+      // 右方向は .next を押すと移動し、左方向は .prev を押すと移動する。
+      // また右端にいる状態で .next を押すと最初の位置に戻り、
+      // 左端にいる状態で .prev を押すと最後の位置に移動する。
+      // data属性にprev,nextを記述しているのでこちらを取得すると楽です。
+      // アニメーションは配列を用いてそれぞれのポジションを記憶させ、添字を用いてそのポジションに移動させるようにするととても楽です。
+      //
+      // .width() 要素の幅を取得します。
+      // .length 要素の個数を取得します。
+      //
+      var length = $(".slider-list li").length,
+        imageSize = $(".slider-list li").width(),
+        imagePostionData = [],
+        clickCount = 0;
+
+      for (var i = 0; i < length; i++) {
+        imagePostionData[i] = imageSize * i;
+      }
+
+      $(".slider-ctrl-btn").click(function () {
+        var data = $(this).data("ctrl");
+        switch (data) {
+          case "next":
+            if (clickCount < length - 1) {
+              clickCount++;
+            } else {
+              clickCount = 0;
+            };
+            break;
+          case "prev":
+            if (clickCount == 0) {
+              clickCount = length - 1;
+            } else {
+              clickCount--;
+            }
+            break;
+        }
+        $(".slider-list").animate({
+          left: -imagePostionData[clickCount]
+        }, 500);
+      });
+    });
+  </script>
+</body>
+
+</html>
